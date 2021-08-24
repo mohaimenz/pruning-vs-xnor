@@ -1,5 +1,5 @@
-# pruning-xnor
-Official repository for the research article -- 
+Official repository for:
+# Pruning vs XNOR-Net: A ComprehensiveStudy on Deep Learning for AudioClassification in Microcontrollers
 
 ##### Note: Please run all the python scripts from a TERMINAL
 
