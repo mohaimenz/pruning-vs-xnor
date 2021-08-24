@@ -9,7 +9,7 @@ Official repository for:
 2. For AudioEvent dataset, the scripts are in this repository audio/resources/ae_
 
 ### Training ACDNet, Micro-ACDNet and Mini-ACDNet
-Example: python audio/trainer.py  --model_path 'path/to/mini/or/micro/acdnet' --dataset 'esc10 or esc50 or us8k' --xnor 0 --nClasses 50 --model_name 'file_name_tosave_the_trained_model'
+Example: python audio/trainer.py  --model_path 'path/to/mini/or/micro/acdnet' --dataset 'esc10 or esc50 or us8k' --data '/path/to/dataset/' --xnor 0 --nClasses 50 --model_name 'file_name_tosave_the_trained_model'
 1. ACDNet on ESC-10: `python audio/trainer.py  --model_path '' --dataset 'esc10' --data '/path/to/dataset/' --xnor 0 --nClasses 10 --model_name 'model_name'`
 2. ACDNet on us8k: `python audio/trainer.py  --model_path '' --dataset 'us8k' --data '/path/to/dataset/' --xnor 0 --nClasses 10 --model_name 'model_name'`
 3. ACDNet on AudioEvent (20 class): `python audio/trainer.py  --model_path '' --dataset 'audioevent' --data '/path/to/dataset/' --xnor 0 --nClasses 20 --model_name 'model_name'`
