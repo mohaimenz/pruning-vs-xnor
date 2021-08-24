@@ -5,22 +5,21 @@ Official repository for the research article --
 
 ## Audio Classification 
 ### Dataset preparation
-1. Please follow official repository for [ACDNet](https://github.com/mohaimenz/acdnet) to prepare the datasets for these experiments
-2. Update `audio/resources/settings.py` by replacing `/path/to/audioi/datasets/` 
-3. Update `opt.data = 'path/to/us8k/dataset'` for UrbanSound8k dataset folder in `audio/trainer.py`
+1. Please follow official repository for [ACDNet](https://github.com/mohaimenz/acdnet) to prepare the audio datasets for these experiments
+2. For AudioEvent dataset, the scripts are in this repository audio/resources/ae_
 
 ### Training ACDNet, Micro-ACDNet and Mini-ACDNet
 Example: python audio/trainer.py  --model_path 'path/to/mini/or/micro/acdnet' --dataset 'esc10 or esc50 or us8k' --xnor 0 --nClasses 50 --model_name 'file_name_tosave_the_trained_model'
-1. ACDNet on ESC-10: `python audio/trainer.py  --model_path '' --dataset 'esc10' --xnor 0 --nClasses 10 --model_name 'adcnet_esc10'`
-2. ACDNet on ESC-30: `python audio/trainer.py  --model_path '' --dataset 'esc50' --xnor 0 --nClasses 30 --model_name 'adcnet_esc30'`
-3. ACDNet on ESC-50: `python audio/trainer.py  --model_path '' --dataset 'esc50' --xnor 0 --nClasses 50 --model_name 'adcnet_esc50'`
-4. Mini-ACDNet on ESC-50: `python audio/trainer.py  --model_path 'audio/models/mini_acdnet.pt' --dataset 'esc50' --xnor 0 --nClasses 50 --model_name 'mini_adcnet_esc10'`
-5. Micro-ACDNet on ESC-10: `python audio/trainer.py  --model_path 'audio/models/micro_acdnet.pt' --dataset 'esc10' --xnor 0 --nClasses 10 --model_name 'micro_adcnet_esc10'`
+1. ACDNet on ESC-10: `python audio/trainer.py  --model_path '' --dataset 'esc10' --data '/path/to/dataset/' --xnor 0 --nClasses 10 --model_name 'model_name'`
+2. ACDNet on us8k: `python audio/trainer.py  --model_path '' --dataset 'us8k' --data '/path/to/dataset/' --xnor 0 --nClasses 10 --model_name 'model_name'`
+3. ACDNet on AudioEvent (20 class): `python audio/trainer.py  --model_path '' --dataset 'audioevent' --data '/path/to/dataset/' --xnor 0 --nClasses 20 --model_name 'model_name'`
+4. Mini-ACDNet on ESC-50: `python audio/trainer.py  --model_path 'audio/models/mini_acdnet.pt' --dataset 'esc50' --data '/path/to/dataset/' --xnor 0 --nClasses 50 --model_name 'model_name'`
+5. Micro-ACDNet on ESC-10: `python audio/trainer.py  --model_path 'audio/models/micro_acdnet.pt' --dataset 'esc10' --data '/path/to/dataset/' --xnor 0 --nClasses 10 --model_name 'model_name'`
 
 ### Training XNOR-Net for ACDNet, Micro-ACDNet and Mini-ACDNet
-1. XACDNet on ESC-50: `python audio/trainer.py  --model_path '' --dataset 'esc50' --xnor 1 --nClasses 50 --model_name 'xacdnet_esc50'`
-2. XMicroACDnet on ESC-40: `python audio/trainer.py  --model_path 'audio/models/micro_acdnet.pt' --dataset 'esc40' --xnor 1 --nClasses 40 --model_name 'xmicro_acdnet_esc40'`
-3. XMiniAcdnet on US8k: `python audio/trainer.py  --model_path 'audio/models/mini_acdnet.pt' --dataset 'us8k' --xnor 1 --nClasses 10 --folds_to_train '[1,2]' --model_name 'xmini_acdnet_us8k'`
+1. XACDNet on ESC-50: `python audio/trainer.py  --model_path '' --dataset 'esc50' --data '/path/to/dataset/' --xnor 1 --nClasses 50 --model_name 'xacdnet_esc50'`
+2. XMicroACDnet on ESC-40: `python audio/trainer.py  --model_path 'audio/models/micro_acdnet.pt' --dataset 'esc40' --data '/path/to/dataset/' --xnor 1 --nClasses 40 --model_name 'xmicro_acdnet_esc40'`
+3. XMiniAcdnet on US8k: `python audio/trainer.py  --model_path 'audio/models/mini_acdnet.pt' --dataset 'us8k' --data '/path/to/dataset/' --xnor 1 --nClasses 10 --folds_to_train '[1,2]' --model_name 'xmini_acdnet_us8k'`
 
 ##### Note: You can use the pretrained micro and mini acdnets files or use your own mini and micro acdnet versions using [ACDNet](https://github.com/mohaimenz/acdnet) repository
 
