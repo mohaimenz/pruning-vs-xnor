@@ -6,7 +6,7 @@ def parse():
 
     # General settings
     parser.add_argument('--netType', default='ACDNet',  required=False);
-    parser.add_argument('--dataset', required=False, default='esc50', choices=['esc50', 'us8k']);
+    parser.add_argument('--dataset', required=False, default='esc50', choices=['esc10', 'esc50', 'us8k', 'audioevent']);
     parser.add_argument('--BC', default=True, action='store_true', help='BC learning');
     parser.add_argument('--strongAugment', default=True,  action='store_true', help='Add scale and gain augmentation');
     parser.add_argument('--data', default='/path/to/audioi/datasets/', required=False, help='Path to dataset');

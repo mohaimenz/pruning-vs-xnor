@@ -194,6 +194,10 @@ class Trainer:
             self.bestAccEpoch = epochIdx +1;
             torch.save(net.state_dict(), fname.format(self.opt.split, self.opt.model_name, self.bestAcc, self.bestAccEpoch));
 
+def TrainModel(opt):
+    opts.display_info(opt);
+    trainer = Trainer(opt);
+    trainer.Train();
 
 if __name__ == '__main__':
     opt = opts.parse();
@@ -202,6 +206,16 @@ if __name__ == '__main__':
     # opt.xnor=True;
     # print(opt.xnor);
     # exit();
+
+    ###This options are provided through slurm job script.
+    ###To run this script directly, uncomment the following lines
+    # opt.dataset = 'esc50';
+    # opt.data = '/path/to/datasets/';
+    # opt.model_path = 'audio/models/mini_acdnet.pt';
+    # opt.xnor=True;
+    # opt.nClasses = 50;
+    # opt.model_name = 'esc50_mini_acdnet';
+
     if opt.xnor:
         opt.LR = 0.001;
         opt.weightDecay = 1e-4;
@@ -209,18 +223,20 @@ if __name__ == '__main__':
     if opt.cuda:
         torch.cuda.manual_seed(opt.seed);
     splits = None;
-    if opt.dataset == 'us8k':
+    if opt.dataset == 'audioevent':
+        opt.sr = 16000;
+        opt.inputLength = 51215;
+        opt.nEpochs = 1500;
+    elif opt.dataset == 'us8k':
         splits = eval(opt.folds_to_train);
-        opt.data = 'path/to/us8k/dataset';
         opt.nEpochs = 1200;
     else:
         splits = opt.splits;
 
-    for split in splits:
-        print('+-- Split {} --+'.format(split));
-        opt.split = split;
-        # opt.split = 4;
-        opts.display_info(opt);
-        trainer = Trainer(opt);
-        trainer.Train();
-        # break;
+    if opt.dataset == 'audioevent':
+        TrainModel(opt);
+    else:
+        for split in splits:
+            print('+-- Split {} --+'.format(split));
+            opt.split = split;
+            TrainModel(opt);

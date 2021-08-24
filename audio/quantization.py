@@ -172,6 +172,9 @@ if __name__ == '__main__':
     opt.model_path = 'path/to/model/to/quantize';
     opt.model_name = 'file_name_for_quantized_model';
     opt.split = 9;
+    if opt.dataset == 'audioevent':
+        opt.sr = 16000;
+        opt.inputLength = 51215;
 
     trainer = Trainer(opt);
 
